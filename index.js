@@ -13,17 +13,23 @@ Database._exec = (query) => {
 }
 
 Database._toCSV = (array, quote) => {
-    return array.reduce((acc, current, index, source) => {
-            if (index == 1) {
-                acc = quote + acc + quote;
-            }
+    if (array.length == 0) {
+        return '';
+    } else if (array.length == 1) {
+        return quote + array[0] + quote;
+    } else {
+        return array.reduce((acc, current, index, source) => {
+                if (index == 1) {
+                    acc = quote + acc + quote;
+                }
 
-            if (index < source.length) {
-                acc += ', ';
-            }
+                if (index < source.length) {
+                    acc += ', ';
+                }
 
-            return acc + quote + current + quote;
-        })
+                return acc + quote + current + quote;
+            })
+    }
 }
 
 Database.databaseName = '';

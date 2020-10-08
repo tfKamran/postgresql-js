@@ -54,6 +54,15 @@ describe('# Database', function() {
         it('should return a CSV', function() {
             assert.equal('"a", "b", "c"', Database._toCSV(['a', 'b', 'c'], '"'));
             assert.equal('\'a\', \'b\', \'c\'', Database._toCSV(['a', 'b', 'c'], '\''));
+            assert.equal('\'a\', \'b\', \'c\'', Database._toCSV(['a', 'b', 'c'], '\''));
+        });
+
+        it('should return with quotes for a single item', function() {
+            assert.equal('\'a\'', Database._toCSV(['a'], '\''));
+        });
+
+        it('should return with quotes for a single item', function() {
+            assert.equal('', Database._toCSV([], '\''));
         });
     });
 
