@@ -32,6 +32,20 @@ describe('# Database', function() {
         });
     });
 
+    describe('## query', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database.query);
+        });
+
+        it('should return an array', function() {
+            assert.notEqual(undefined, Database.query('SELECT * FROM test_table').length);
+        });
+
+        it('should return the result of query', function() {
+            assert.deepEqual([{ id: '1', string: 'some' }], Database.query('SELECT * FROM test_table'));
+        });
+    });
+
     after(function() {
         Database.initialize('');
         Database.execute('DROP DATABASE test_database');
