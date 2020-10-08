@@ -46,6 +46,17 @@ describe('# Database', function() {
         });
     });
 
+    describe('## _toCSV', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database._toCSV);
+        });
+
+        it('should return a CSV', function() {
+            assert.equal('"a", "b", "c"', Database._toCSV(['a', 'b', 'c'], '"'));
+            assert.equal('\'a\', \'b\', \'c\'', Database._toCSV(['a', 'b', 'c'], '\''));
+        });
+    });
+
     after(function() {
         Database.initialize('');
         Database.execute('DROP DATABASE test_database');

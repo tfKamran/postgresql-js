@@ -12,6 +12,20 @@ Database._exec = (query) => {
     return execSync(command).toString().trim();
 }
 
+Database._toCSV = (array, quote) => {
+    return array.reduce((acc, current, index, source) => {
+            if (index == 1) {
+                acc = quote + acc + quote;
+            }
+
+            if (index < source.length) {
+                acc += ', ';
+            }
+
+            return acc + quote + current + quote;
+        })
+}
+
 Database.databaseName = '';
 
 Database.initialize = (databaseName) => {
