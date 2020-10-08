@@ -96,6 +96,26 @@ describe('# Database', function() {
         });
     });
 
+    describe('## delete', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database.delete);
+        });
+
+        it('should respect the condition', function() {
+            Database.delete('test_table', '"id"=\'2\'');
+            assert.deepEqual(1, Database.get('test_table').length);
+        });
+
+        it('should delete all when there is no condition', function() {
+            Database.delete('test_table');
+            assert.deepEqual(0, Database.get('test_table').length);
+        });
+
+        it('should return number of items deleted', function() {
+            assert.equal(0, Database.delete('test_table').length);
+        });
+    });
+
     describe('## _toCSV', function() {
         it('should be of type function', function() {
             assert.equal('function', typeof Database._toCSV);

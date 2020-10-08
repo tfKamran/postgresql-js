@@ -93,4 +93,9 @@ Database.update = (table, item, condition) => {
     return Database._exec(query).split(' ')[1];
 }
 
+Database.delete = (table, condition) => {
+    return Database.query('DELETE FROM ' + table
+        + (condition ? ' WHERE ' + condition : ''));
+}
+
 module.exports = Database;
