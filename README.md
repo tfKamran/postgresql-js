@@ -76,6 +76,15 @@ For UPDATE queries, you can call the function `update` with table name, object w
 
 It returns the number of items updated.
 
+------
+
+For DELETE queries, you can call the function `delete` with table name and optional conditions:
+
+    Database.delete('my_table', '"id"=\'2\'');
+    Database.delete('my_table');
+
+It returns the number of items deleted.
+
 ## How to contribute?
 
 Feel free to raise a pull request!
