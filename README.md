@@ -34,7 +34,7 @@ You can initialize the library to use a particular database by passing the name:
 
 ------
 
-To execute non SELECT queries like INSERT, UPDATE, DELETE, DROP or PostgreSQL commands like /c, you can use the function `execute`:
+To execute queries or PostgreSQL commands like /c to get raw response, you can use the function `execute`:
 
     Database.execute('CREATE TABLE my_table (id SERIAL, text VARCHAR (100)');
     Database.execute('INSERT INTO my_table ("text") VALUES (\'the value\')');
@@ -48,6 +48,14 @@ For SELECT queries, you can call the function `query` to fetch the results as JS
 The query function returns something like:
 
     [{ id: '1', text: 'the value' }]
+
+------
+
+For INSERT queries, you can call the function `insert` with table name and object to insert:
+
+    Database.insert('my_table', { text: 'another value' });
+
+It returns something the number of items inserted.
 
 ## How to contribute?
 
