@@ -41,9 +41,20 @@ To execute queries or PostgreSQL commands like /c to get raw response, you can u
 
 ------
 
-For SELECT queries, you can call the function `query` to fetch the results as JSON:
+For queries where you expect JSON array as response, you can call the function `query`:
 
     Database.query('SELECT * FROM my_table');
+
+The query function returns something like:
+
+    [{ id: '1', text: 'the value' }]
+
+------
+
+For SELECT queries, you can call the function `get` with table name and optional conditions:
+
+    Database.get('SELECT * FROM my_table');
+    Database.get('SELECT * FROM my_table', '"id"=\'1\'');
 
 The query function returns something like:
 
