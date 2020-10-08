@@ -55,7 +55,15 @@ For INSERT queries, you can call the function `insert` with table name and objec
 
     Database.insert('my_table', { text: 'another value' });
 
-It returns something the number of items inserted.
+It returns the number of items inserted.
+
+------
+
+For UPDATE queries, you can call the function `update` with table name, object with updated content and condition:
+
+    Database.update('my_table', { text: 'yet another value' }, '"id"=\'2\'');
+
+It returns the number of items updated.
 
 ## How to contribute?
 
