@@ -1,13 +1,13 @@
 # postgresql-js
 
-A simple library that lets you control and query local PostgreSQL server
-
 [![npm version](https://badge.fury.io/js/postgresql-js.svg)](https://badge.fury.io/js/postgresql-js)
 [![npm downloads](https://img.shields.io/npm/dt/postgresql-js.svg)](https://www.npmjs.com/package/postgresql-js)
 
 [![NPM](https://nodei.co/npm/postgresql-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/postgresql-js/)
 
-A customisable bot that replies on hangouts based on the configuration.
+A simple library that lets you control and query local PostgreSQL server.
+
+**Note:** It is built over `psql` CLI interface, so it won't work unless `psql` is executable through terminal.
 
 ## How to install?
 
