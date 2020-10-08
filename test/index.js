@@ -46,6 +46,22 @@ describe('# Database', function() {
         });
     });
 
+    describe('## insert', function() {
+        const testItem = { string: 'other' };
+
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database.insert);
+        });
+
+        it('should return number of items inserted', function() {
+            assert.equal('1', Database.insert('test_table', testItem));
+        });
+
+        it('should be returned in query', function() {
+            assert.deepEqual(testItem.string, Database.query('SELECT * FROM test_table WHERE string=\'' + testItem.string +'\'')[0].string);
+        });
+    });
+
     describe('## _toCSV', function() {
         it('should be of type function', function() {
             assert.equal('function', typeof Database._toCSV);

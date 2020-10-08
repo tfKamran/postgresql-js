@@ -62,4 +62,15 @@ Database.query = (query) => {
     return result;
 }
 
+Database.insert = (table, item) => {
+    const query = 'INSERT INTO ' + table
+        + ' ('
+        + Database._toCSV(Object.keys(item), '"')
+        + ') VALUES ('
+        + Database._toCSV(Object.values(item), '\'')
+        + ')';
+
+    return Database._exec(query).split(' ')[2];
+}
+
 module.exports = Database;
