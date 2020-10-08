@@ -77,8 +77,23 @@ describe('# Database', function() {
             assert.equal('\'a\'', Database._toCSV(['a'], '\''));
         });
 
-        it('should return with quotes for a single item', function() {
+        it('should return empty string for empty array', function() {
             assert.equal('', Database._toCSV([], '\''));
+        });
+    });
+
+    describe('## _toKeyValuePairArray', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database._toKeyValuePairArray);
+        });
+
+        it('should return a key value pair array from object', function() {
+            assert.deepEqual(['"a"=\'b\''], Database._toKeyValuePairArray({ 'a': 'b' }));
+            assert.deepEqual(['"a"=\'b\'', '"c"=\'d\''], Database._toKeyValuePairArray({ 'a': 'b', 'c': 'd' }));
+        });
+
+        it('should return empty string for empty object', function() {
+            assert.equal('', Database._toKeyValuePairArray({}));
         });
     });
 

@@ -32,6 +32,12 @@ Database._toCSV = (array, quote) => {
     }
 }
 
+Database._toKeyValuePairArray = (items) => {
+    const values = Object.values(items);
+
+    return Object.keys(items).map((key, index) => '"' + key + '"=\'' + values[index] + '\'');
+}
+
 Database.databaseName = '';
 
 Database.initialize = (databaseName) => {
