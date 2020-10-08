@@ -68,6 +68,11 @@ Database.query = (query) => {
     return result;
 }
 
+Database.get = (table, condition) => {
+    return Database.query('SELECT * FROM ' + table
+        + (condition ? ' WHERE ' + condition : ''));
+}
+
 Database.insert = (table, item) => {
     const query = 'INSERT INTO ' + table
         + ' ('

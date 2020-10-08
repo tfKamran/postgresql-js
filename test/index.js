@@ -78,6 +78,24 @@ describe('# Database', function() {
         });
     });
 
+    describe('## get', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database.get);
+        });
+
+        it('should return an array', function() {
+            assert.notEqual(undefined, Database.get('test_table').length);
+        });
+
+        it('should return the result of query', function() {
+            assert.deepEqual(Database.query('SELECT * FROM test_table'), Database.get('test_table'));
+        });
+
+        it('should respect the condition', function() {
+            assert.deepEqual(Database.query('SELECT * FROM test_table WHERE id=\'' + 2 +'\''), Database.get('test_table', '"id"=\'2\''));
+        });
+    });
+
     describe('## _toCSV', function() {
         it('should be of type function', function() {
             assert.equal('function', typeof Database._toCSV);
