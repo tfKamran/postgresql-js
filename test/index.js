@@ -28,6 +28,7 @@ describe('# Database', function() {
         
         it('should return the result of execution', function() {
             assert.equal('CREATE TABLE', Database.execute('CREATE TABLE test_table (id SERIAL, string VARCHAR (100))'));
+            assert.equal('INSERT 0 1', Database.execute('INSERT INTO test_table ("string") VALUES (\'some\')'));
         });
     });
 
