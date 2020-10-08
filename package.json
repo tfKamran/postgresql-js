@@ -1,6 +1,6 @@
 {
   "name": "postgresql-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple library that lets you control and query local PostgreSQL server",
   "main": "index.js",
   "scripts": {
