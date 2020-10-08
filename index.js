@@ -79,4 +79,13 @@ Database.insert = (table, item) => {
     return Database._exec(query).split(' ')[2];
 }
 
+Database.update = (table, item, condition) => {
+    const query = 'UPDATE ' + table
+        + ' SET '
+        + Database._toKeyValuePairArray(item).join(', ')
+        + ' WHERE ' + condition;
+
+    return Database._exec(query).split(' ')[1];
+}
+
 module.exports = Database;
