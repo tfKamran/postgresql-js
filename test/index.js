@@ -112,7 +112,9 @@ describe('# Database', function() {
         });
 
         it('should return number of items deleted', function() {
-            assert.equal(0, Database.delete('test_table').length);
+            assert.equal(0, Database.delete('test_table'));
+            Database.insert('test_table', { string: 'value' });
+            assert.equal(1, Database.delete('test_table'));
         });
     });
 
