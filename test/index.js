@@ -181,6 +181,11 @@ describe('# Database', function() {
             assert.equal('\'a\', \'b\', \'c\'', Database._toCSV(['a', 'b', 'c'], '\''));
         });
 
+        it('should return without quotes for numbers', function() {
+            assert.equal('"a", 3, "c"', Database._toCSV(['a', 3, 'c'], '"'));
+            assert.equal('"a", "c", 4.2', Database._toCSV(['a', 'c', 4.2], '"'));
+        });
+
         it('should return with quotes for a single item', function() {
             assert.equal('\'a\'', Database._toCSV(['a'], '\''));
         });
@@ -198,6 +203,11 @@ describe('# Database', function() {
         it('should return a key value pair array from object', function() {
             assert.deepEqual(['"a"=\'b\''], Database._toKeyValuePairArray({ 'a': 'b' }));
             assert.deepEqual(['"a"=\'b\'', '"c"=\'d\''], Database._toKeyValuePairArray({ 'a': 'b', 'c': 'd' }));
+        });
+
+        it('should return without quotes for numbers', function() {
+            assert.equal('"a"=3', Database._toKeyValuePairArray({'a': 3}, '"'));
+            assert.equal('"a"=4.2', Database._toKeyValuePairArray({'a': 4.2}, '"'));
         });
 
         it('should return empty string for empty object', function() {

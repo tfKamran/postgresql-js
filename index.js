@@ -24,18 +24,18 @@ Database._toCSV = (array, quote) => {
     if (array.length == 0) {
         return '';
     } else if (array.length == 1) {
-        return quote + array[0] + quote;
+        return Database._encapsulateWithQuoteIfNotNumber(array[0], quote);
     } else {
         return array.reduce((acc, current, index, source) => {
                 if (index == 1) {
-                    acc = quote + acc + quote;
+                    acc = Database._encapsulateWithQuoteIfNotNumber(acc, quote);
                 }
 
                 if (index < source.length) {
                     acc += ', ';
                 }
 
-                return acc + quote + current + quote;
+                return acc + Database._encapsulateWithQuoteIfNotNumber(current, quote);
             })
     }
 }
@@ -43,7 +43,7 @@ Database._toCSV = (array, quote) => {
 Database._toKeyValuePairArray = (items) => {
     const values = Object.values(items);
 
-    return Object.keys(items).map((key, index) => '"' + key + '"=\'' + values[index] + '\'');
+    return Object.keys(items).map((key, index) => '"' + key + '"=' + Database._encapsulateWithQuoteIfNotNumber(values[index], '\''));
 }
 
 Database.databaseName = '';
