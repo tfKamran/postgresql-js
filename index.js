@@ -16,6 +16,10 @@ Database._isANumber = (item) => {
     return !isNaN(+item);
 }
 
+Database._encapsulateWithQuoteIfNotNumber = (item, quote) => {
+    return Database._isANumber(item) ? item : (quote + item + quote);
+}
+
 Database._toCSV = (array, quote) => {
     if (array.length == 0) {
         return '';

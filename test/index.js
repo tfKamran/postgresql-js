@@ -144,6 +144,32 @@ describe('# Database', function() {
         });
     });
 
+    describe('## _encapsulateWithQuoteIfNotNumber', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database._encapsulateWithQuoteIfNotNumber);
+        });
+
+        it('should return as it is for a number', function() {
+            assert.equal(2, Database._encapsulateWithQuoteIfNotNumber(2, '"'));
+        });
+
+        it('should return as it is for a number in string', function() {
+            assert.equal(2, Database._encapsulateWithQuoteIfNotNumber('2', '"'));
+        });
+
+        it('should return as it is for a float in string', function() {
+            assert.equal(2.2, Database._encapsulateWithQuoteIfNotNumber('2.2', '"'));
+        });
+
+        it('should return with quote for a alphabet in string', function() {
+            assert.equal('"a"', Database._encapsulateWithQuoteIfNotNumber('a', '"'));
+        });
+
+        it('should return with quote for a symbol in string', function() {
+            assert.equal('"+"', Database._encapsulateWithQuoteIfNotNumber('+', '"'));
+        });
+    });
+
     describe('## _toCSV', function() {
         it('should be of type function', function() {
             assert.equal('function', typeof Database._toCSV);
