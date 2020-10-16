@@ -118,6 +118,32 @@ describe('# Database', function() {
         });
     });
 
+    describe('## _isANumber', function() {
+        it('should be of type function', function() {
+            assert.equal('function', typeof Database._isANumber);
+        });
+
+        it('should return true for a number', function() {
+            assert.equal(true, Database._isANumber(2));
+        });
+
+        it('should return true for a number in string', function() {
+            assert.equal(true, Database._isANumber('2'));
+        });
+
+        it('should return true for a float in string', function() {
+            assert.equal(true, Database._isANumber('2.2'));
+        });
+
+        it('should return false for a alphabet in string', function() {
+            assert.equal(false, Database._isANumber('a'));
+        });
+
+        it('should return false for a symbol in string', function() {
+            assert.equal(false, Database._isANumber('+'));
+        });
+    });
+
     describe('## _toCSV', function() {
         it('should be of type function', function() {
             assert.equal('function', typeof Database._toCSV);

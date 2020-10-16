@@ -12,6 +12,10 @@ Database._exec = (query) => {
     return execSync(command).toString().trim();
 }
 
+Database._isANumber = (item) => {
+    return !isNaN(+item);
+}
+
 Database._toCSV = (array, quote) => {
     if (array.length == 0) {
         return '';
