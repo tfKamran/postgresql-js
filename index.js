@@ -67,7 +67,8 @@ Database.query = (query) => {
 
             const resultItem = {};
             keys.forEach((key, index) => {
-                resultItem[key] = row[index];
+                const value = +row[index];
+                resultItem[key] = isNaN(value) ? row[index] : value;
             })
             result.push(resultItem);
         }

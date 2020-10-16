@@ -27,8 +27,8 @@ describe('# Database', function() {
         });
         
         it('should return the result of execution', function() {
-            assert.equal('CREATE TABLE', Database.execute('CREATE TABLE test_table (id SERIAL, string VARCHAR (100))'));
-            assert.equal('INSERT 0 1', Database.execute('INSERT INTO test_table ("string") VALUES (\'some\')'));
+            assert.equal('CREATE TABLE', Database.execute('CREATE TABLE test_table (id SERIAL, string VARCHAR (100), number INTEGER)'));
+            assert.equal('INSERT 0 1', Database.execute('INSERT INTO test_table ("string", "number") VALUES (\'some\', 50)'));
         });
     });
 
@@ -42,7 +42,11 @@ describe('# Database', function() {
         });
 
         it('should return the result of query', function() {
-            assert.deepEqual([{ id: '1', string: 'some' }], Database.query('SELECT * FROM test_table'));
+            assert.deepEqual([{ id: '1', string: 'some', number: 50 }], Database.query('SELECT * FROM test_table'));
+        });
+
+        it('should return the numerical values as number', function() {
+            assert.equal('number', typeof (Database.query('SELECT * FROM test_table')[0].number));
         });
     });
 
